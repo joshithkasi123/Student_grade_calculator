@@ -2,57 +2,67 @@
 const calculate = () => { 
 
     // Getting input from user into height variable. 
-    let chemistry = document.querySelector("#chemistry").value; 
+    let telugu = document.querySelector("#telugu").value; 
     let hindi = document.querySelector("#hindi").value; 
-    let maths = document.querySelector("#maths").value; 
-    let phy = document.querySelector("#phy").value; 
     let english=document.querySelector("#english").value;
+    let maths = document.querySelector("#maths").value; 
+    let science = document.querySelector("#science").value; 
+    let social = document.querySelector("#social").value;
     let grades = ""; 
     
     // Input is string so typecasting is necessary. */ 
+    if( telugu < 40 || hindi < 40 || english < 40 || maths < 40 || science < 40 || social < 40){
+        document.querySelector("#showdata").innerHTML
+        = `You have one more chance to get success score more than 40 in every subject`;
+    }
+    else
+    {
     let totalgrades = 
-        parseFloat(chemistry) + 
+        parseFloat(telugu) + 
         parseFloat(hindi) + 
+        parseFloat(english)+
         parseFloat(maths) + 
-        parseFloat(phy)+
-        parseFloat(english); 
+        parseFloat(science)+
+        parseFloat(social); 
     
     // Checking the condition for the providing the 
     // grade to student based on percentage 
-    let percentage = (totalgrades / 500) * 100; 
+    let percentage =parseInt((totalgrades / 600) * 100); 
     if (percentage <= 100 && percentage >= 80) { 
-        grades = "A"; 
+        grades = "Excellent"; 
     } else if (percentage <= 79 && percentage >= 60) { 
-        grades = "B"; 
+        grades = "Very good"; 
     } else if (percentage <= 59 && percentage >= 40) { 
-        grades = "C"; 
+        grades = "Good"; 
     } else { 
-        grades = "F"; 
+        grades = " one more chance "; 
     } 
     // Checking the values are empty if empty than 
     // show please fill them 
-    if (chemistry == "" || hindi == ""
-                || maths == "" || phy == "" || english == "") { 
+    if (telugu == "" || hindi == "" || english == "" || maths == "" || science == "" || social == "") { 
         document.querySelector("#showdata").innerHTML 
             = "Please enter all the fields"; 
-    } else { 
+    } 
+    else { 
     
-        // Checking the condition for the fail and pass 
+        // Checking the condition for the fail and pass
+        
         if (percentage >= 39.5) { 
         document.querySelector( 
             "#showdata"
         ).innerHTML = 
-            ` Out of 500 your total is ${totalgrades} 
+            ` Out of 600 your total is ${totalgrades} 
             and percentage is ${percentage}%. <br> 
-            Your grade is ${grades}. You are Pass. `; 
+            You are ${grades}. You got the success. `; 
         } else { 
         document.querySelector( 
             "#showdata"
         ).innerHTML = 
-            ` Out of 500 your total is ${totalgrades} 
+            ` Out of 600 your total is ${totalgrades} 
             and percentage is ${percentage}%. <br> 
-            Your grade is ${grades}. You are Fail. `; 
+            You have ${grades} to get success `; 
         } 
     } 
-    }; 
+    }
+};
     
